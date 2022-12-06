@@ -25,4 +25,10 @@ public class ProductController {
         dao.save(p);
         return "product added successfully";
     }
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("/view")
+    public List<ProductModel> viewPage(){
+        return (List<ProductModel>) dao.findAll();
+    }
 }
