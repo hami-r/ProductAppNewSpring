@@ -5,6 +5,7 @@ import com.nest.productappnew_backend.model.ProductModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -21,9 +22,11 @@ public class ProductController {
 
     @CrossOrigin(origins = "*")
     @PostMapping(path = "/add", consumes = "application/json", produces = "application/json")
-    public String addPage(@RequestBody ProductModel p){
+    public HashMap<String, String> addPage(@RequestBody ProductModel p){
         dao.save(p);
-        return "product added successfully";
+        HashMap<String,String > map = new HashMap<>();
+        map.put("status","success");
+        return map;
     }
 
     @CrossOrigin(origins = "*")
